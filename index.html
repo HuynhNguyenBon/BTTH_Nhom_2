@@ -1,0 +1,1002 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automize - Auto Parts & Services</title>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bai+Jamjuree:400,500,600,700,800&display=swap">
+    
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --primary-red: #db0000;
+            --dark: #222222;
+            --gray: #f5f5f5;
+            --text-gray: #666666;
+            --border-color: #e5e5e5;
+            --font-main: 'Bai Jamjuree', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-main); color: var(--dark); font-size: 14px; line-height: 1.5; background: #fff; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; display: block; }
+        input, button { font-family: inherit; outline: none; }
+
+        /* --- UTILITIES --- */
+        .container { max-width: 1440px; margin: 0 auto; padding: 0 15px;}
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .justify-center { justify-content: center; }
+        .grid { display: grid; }
+        .gap-4 { gap: 1rem; }
+        .gap-6 { gap: 1.5rem; }
+        .text-center { text-align: center; }
+        .font-bold { font-weight: 700; }
+        .text-red { color: var(--primary-red); }
+        .bg-red { background-color: var(--primary-red); color: white; }
+        .relative { position: relative; }
+        .w-full { width: 100%; }
+        .mt-10 { margin-top: 40px; }
+        .mb-4 { margin-bottom: 1rem; }
+        .uppercase { text-transform: uppercase; }
+
+        /* --- HEADER --- */
+        /* -----------------------------------------------------------
+           2. HEADER STYLES (NAVBAR) - Updated to match image
+        ----------------------------------------------------------- */
+        
+        /* --- TOP HEADER (White) --- */
+        .header-top { padding: 25px 0; border-bottom: 1px solid var(--border-color); }
+        
+        /* Menu */
+
+        /* 1 */
+        .dropdown-menu-wrap { position: relative; display: inline-block; }
+        .dropdown-content { visibility: hidden; opacity: 0; position: absolute; top: 100%; left: 0; border-radius: 8px; background-color: #fff; min-width: 250px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 10; padding: 10px 0; list-style: none; margin: 0; transition: opacity 0.1s ease, visibility 0.1s ease; transform: translateY(0); }
+        .dropdown-content li a { color: #666; padding: 12px 16px; text-decoration: none; display: block; font-weight: 400; white-space: nowrap; opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease; font-size: 14px; }
+        .dropdown-content li a:hover { color: #c00; background-color: #f1f1f1; }
+        .dropdown-menu-wrap:hover .dropdown-content { visibility: visible; opacity: 1; transition-delay: 0s; }
+        .dropdown-menu-wrap:hover .dropdown-content li a { opacity: 1; transform: translateY(0); }
+        .dropdown-menu-wrap:hover .dropdown-content li:nth-child(1) a { transition-delay: 0.1s; }
+        .dropdown-menu-wrap:hover .dropdown-content li:nth-child(2) a { transition-delay: 0.15s; }
+        .dropdown-menu-wrap:hover .dropdown-content li:nth-child(3) a { transition-delay: 0.2s; }
+        .dropdown-menu-wrap:hover .dropdown-content li:nth-child(4) a { transition-delay: 0.25s; }
+        .dropdown-menu-wrap:hover .dropdown-content li:nth-child(5) a { transition-delay: 0.3s; }
+        .dropdown-menu-wrap:hover .dropdown-content li:nth-child(6) a { transition-delay: 0.35s; }
+        .dropdown-menu-wrap:hover .dropdown-content li:nth-child(7) a { transition-delay: 0.4s; }
+        .dropdown-menu-wrap:hover .dropdown-content li:nth-child(8) a { transition-delay: 0.45s; }
+        .dropdown-menu-wrap:hover .dropdown-content li:nth-child(9) a { transition-delay: 0.5s; }
+        .dropdown-menu-wrap:hover .dropdown-content li:nth-child(10) a { transition-delay: 0.55s; }
+        .dropdown-menu-wrap:hover .dropdown-content li:nth-child(11) a { transition-delay: 0.6s; }
+        .dropdown-menu-wrap:hover .dropdown-content li:nth-child(12) a { transition-delay: 0.65s; }
+
+        /* 2 */
+        .pages-dropdown-wrap { position: relative; display: inline-block; }
+        .pages-dropdown-content { visibility: hidden; opacity: 0; position: absolute; top: 100%; left: 0; border-radius: 8px; background-color: #fff; min-width: 250px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 10; padding: 10px 0; list-style: none; margin: 0; transition: opacity 0.1s ease, visibility 0.1s ease; transform: translateY(0); }
+        .pages-dropdown-content li a { color: #666; padding: 12px 16px; text-decoration: none; display: block; font-weight: 400; white-space: nowrap; opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease; font-size: 14px; }
+        .pages-dropdown-content li a:hover { color: #c00; background-color: #f1f1f1; }
+        .pages-dropdown-wrap:hover .pages-dropdown-content { visibility: visible; opacity: 1; transition-delay: 0s; }
+        .pages-dropdown-wrap:hover .pages-dropdown-content li a { opacity: 1; transform: translateY(0); }
+        .pages-dropdown-wrap:hover .pages-dropdown-content li:nth-child(1) a { transition-delay: 0.1s; }
+        .pages-dropdown-wrap:hover .pages-dropdown-content li:nth-child(2) a { transition-delay: 0.15s; }
+        .pages-dropdown-wrap:hover .pages-dropdown-content li:nth-child(3) a { transition-delay: 0.2s; }
+        .pages-dropdown-wrap:hover .pages-dropdown-content li:nth-child(4) a { transition-delay: 0.25s; }
+        .pages-dropdown-wrap:hover .pages-dropdown-content li:nth-child(5) a { transition-delay: 0.3s; }
+        .pages-dropdown-wrap:hover .pages-dropdown-content li:nth-child(6) a { transition-delay: 0.35s; }
+        .pages-dropdown-wrap:hover .pages-dropdown-content li:nth-child(7) a { transition-delay: 0.4s; }
+        .pages-dropdown-wrap:hover .pages-dropdown-content li:nth-child(8) a { transition-delay: 0.45s; }
+        .pages-dropdown-wrap:hover .pages-dropdown-content li:nth-child(9) a { transition-delay: 0.5s; }
+        .pages-dropdown-wrap:hover .pages-dropdown-content li:nth-child(10) a { transition-delay: 0.55s; }
+        .pages-dropdown-wrap:hover .pages-dropdown-content li:nth-child(11) a { transition-delay: 0.6s; }
+
+        /* 3 */
+        .shop-mega-wrap { position: relative; display: inline-block; }
+        .shop-mega-content { visibility: hidden; opacity: 0; position: absolute; top: 100%; left: -150px; border-radius: 8px; background-color: #fff; width: 900px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 10; padding: 40px 30px; transition: opacity 0.1s ease, visibility 0.1s ease; transform: translateY(0); display: flex; justify-content: space-between; align-items: flex-start; }
+        .shop-mega-wrap:hover .shop-mega-content { visibility: visible; opacity: 1; transition-delay: 0s; }
+        .mega-column { width: 25%; padding-right: 20px; }
+        .mega-image-col { width: 25%; text-align: right; padding-left: 20px; }
+        .mega-image-col img { max-width: 100%; height: auto; display: block; }
+        .mega-title { font-size: 14px; font-weight: 500; color: #111; margin-bottom: 15px; text-transform: capitalize; }
+        .mega-column ul { list-style: none; padding: 0; margin: 0; }
+        .mega-column li a { display: block; padding: 7px 0; color: #666; font-size: 14px; text-decoration: none; white-space: nowrap; transition: color 0.2s ease; }
+        .mega-column li a:hover { color: #c00; }
+
+        /* 4 */
+        .product-mega-wrap { position: relative; display: inline-block; }
+        .product-mega-content { visibility: hidden; opacity: 0; position: absolute; top: 100%; left: -250px; border-radius: 8px; background-color: #fff; width: 1200px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 10; padding: 40px 30px; transition: opacity 0.1s ease, visibility 0.1s ease; transform: translateY(0); display: flex; justify-content: space-between; align-items: flex-start; }
+        .product-mega-wrap:hover .product-mega-content { visibility: visible; opacity: 1; transition-delay: 0s; }
+        .mega-best-selling-col { width: 35%; padding-left: 40px; }
+        .mega-best-selling-col .mega-title { margin-bottom: 25px; }
+        .best-selling-item { display: flex; flex-direction: column; align-items: center; text-align: center; border: 1px solid #eee; padding: 20px; border-radius: 4px; }
+        .best-selling-item img { max-width: 150px; height: auto; margin-bottom: 10px; }
+        .item-details { width: 100%; }
+        .item-rating { color: #ccc; margin-bottom: 5px; }
+        .item-rating .rating-count { font-size: 12px; color: #999; margin-left: 5px; }
+        .item-details .item-desc { font-size: 14px; color: #666; margin: 0 0 10px 0; line-height: 1.4; }
+        .item-details .item-price { font-size: 18px; color: #c00; font-weight: 700; margin: 0; }
+        .dot-navigation { display: flex; justify-content: center; margin-top: 15px; }
+        .dot-navigation .dot { height: 8px; width: 8px; background-color: #ccc; border-radius: 50%; margin: 0 5px; cursor: pointer; transition: background-color 0.3s; }
+        .dot-navigation .dot.active { background-color: #c00; }
+        .product-mega-content .mega-column { width: 22%; padding-right: 40px; }
+
+        /* 5 */
+        .blog-dropdown-wrap { position: relative; display: inline-block; }
+        .blog-dropdown-content { visibility: hidden; opacity: 0; position: absolute; top: 100%; left: -120px; border-radius: 12px; background-color: #fff; min-width: 250px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 10; padding: 0; list-style: none; margin: 0; transition: opacity 0.3s ease, visibility 0.3s ease; transform: translateY(5px); }
+        .blog-dropdown-content li { border-bottom: 1px solid #eee; }
+        .blog-dropdown-content li:last-child { border-bottom: none; }
+        .blog-dropdown-content li a { color: #111; padding: 16px; text-decoration: none; display: flex; justify-content: space-between; align-items: center; font-weight: 500; white-space: nowrap; font-size: 14px; transition: color 0.2s ease; }
+        .blog-dropdown-content li a:hover { color: #c00; }
+        .blog-dropdown-wrap:hover .blog-dropdown-content { visibility: visible; opacity: 1; transform: translateY(0); }
+
+
+        .main-menu { display: flex; gap: 40px; }
+        .main-menu a { font-weight: 700; font-size: 15px; text-transform: uppercase; color: var(--text-dark); display: flex; align-items: center; gap: 5px; }
+        .main-menu a:hover, .main-menu a.active { color: var(--primary-red); }
+        .main-menu a svg { width: 10px; height: 10px; fill: currentColor; opacity: 0.6; stroke-width: 1; }
+
+        /* Right Contacts */
+        .header-contact { display: flex; align-items: center; gap: 30px; }
+        .contact-item { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; color: var(--text-dark); }
+        .contact-item svg { width: 20px; height: 20px; fill: #333; }
+        .contact-item:hover { color: var(--primary-red); }
+        .contact-item:hover svg { fill: var(--primary-red); }
+
+        /* --- BOTTOM HEADER (Red) --- */
+        .header-bottom { background: var(--primary-red); height: 70px; }
+        .hb-container { height: 100%; display: flex; align-items: center; }
+
+        /* Browse Categories Button */
+        .cat-btn {
+            background: var(--primary-dark-red); /* Darker Red */
+            color: #fff;
+            height: 100%;
+            padding: 0 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 14px;
+            min-width: 280px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .cat-btn:hover { background: #000; }
+        .cat-btn svg { width: 22px; height: 22px; fill: white; }
+
+        /* Search Bar */
+        .search-wrap { flex-grow: 1; margin: 0 30px; height: 50px; position: relative; }
+        .search-form {
+            display: flex;
+            width: 100%; height: 100%;
+            background: #fff;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .search-cat-label {
+            display: flex; align-items: center;
+            padding: 0 20px;
+            background: #fff;
+            color: #555;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-right: 1px solid #ddd;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .search-cat-label svg { width: 10px; height: 10px; margin-left: 8px; fill: #888; }
+        .search-input {
+            flex-grow: 1;
+            border: none;
+            padding: 0 20px;
+            font-size: 14px;
+            color: #333;
+        }
+        .search-btn {
+            width: 55px;
+            background: #fff;
+            border: none;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .search-btn svg { width: 20px; height: 20px; fill: #333; transition: 0.3s; }
+        .search-btn:hover svg { fill: var(--primary-red); }
+
+        /* Header Icons (Right) */
+        .header-icons { display: flex; align-items: center; gap: 25px; margin-left: 10px; }
+        .icon-box { display: flex; align-items: center; gap: 10px; color: white; cursor: pointer; }
+        
+        .ib-icon { position: relative; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; }
+        .ib-icon svg { width: 26px; height: 26px; fill: white; } /* Outline style */
+        
+        .ib-count {
+            position: absolute; top: -5px; right: -8px;
+            background: #fff; color: var(--primary-red); /* Red number on white */
+            font-size: 11px; font-weight: 800;
+            width: 18px; height: 18px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .ib-text { line-height: 1.2; font-size: 13px; font-weight: 700; }
+        .ib-text span { display: block; font-weight: 400; font-size: 11px; opacity: 0.9; }
+
+        /* --- HERO SECTION --- */
+        .hero-section { padding-top: 0; margin-bottom: 40px; }
+        .hero-layout { display: grid; grid-template-columns: 250px 1fr; gap: 30px; }
+        
+        /* Sidebar Menu */
+        .sidebar-menu { border: 1px solid var(--border-color); border-top: none; }
+        .sidebar-menu li a { display: block; padding: 12px 20px; border-bottom: 1px solid var(--border-color); font-weight: 500; font-size: 14px; display: flex; align-items: center; justify-content: space-between; }
+        .sidebar-menu li a:hover { color: var(--primary-red); padding-left: 25px; }
+        .sidebar-menu i { margin-right: 10px; width: 20px; text-align: center; color: #999; }
+
+        /* Hero Banner */
+        .hero-banner { background: #f4f4f4; border-radius: 10px; position: relative; overflow: hidden; display: flex; align-items: center; padding: 0 60px; min-height: 480px; }
+        .banner-content { width: 50%; z-index: 2; }
+        .banner-content h4 { color: var(--primary-red); font-weight: 700; margin-bottom: 10px; }
+        .banner-content h1 { font-size: 48px; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+        .btn-shop { background: #000; color: white; padding: 12px 30px; border-radius: 30px; font-weight: 700; display: inline-block; }
+        .hero-image { position: absolute; right: -50px; top: 50%; transform: translateY(-50%); width: 60%; }
+
+        /* --- FEATURES ICONS --- */
+        .features-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
+        .feature-box { display: flex; align-items: center; gap: 15px; padding: 20px; border: 1px solid var(--border-color); border-radius: 8px; }
+        .feature-icon img { width: 50px; }
+        .feature-text h5 { font-size: 15px; font-weight: 800; margin-bottom: 4px; }
+        .feature-text p { font-size: 13px; color: var(--text-gray); }
+
+        /* --- BANNERS GRID --- */
+        .banners-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+        .promo-card { position: relative; border-radius: 10px; overflow: hidden; height: 260px; background: #eee; }
+        .promo-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .promo-card:hover img { transform: scale(1.05); }
+        .card-overlay { position: absolute; top: 50%; left: 30px; transform: translateY(-50%); z-index: 2; }
+        .card-overlay h4 { font-size: 22px; font-weight: 800; margin-bottom: 5px; }
+        .card-overlay .btn-small { background: #000; color: white; padding: 8px 20px; border-radius: 20px; font-size: 12px; font-weight: 700; display: inline-block; margin-top: 10px; }
+
+        /* --- SECTION HEADERS --- */
+        .section-header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--primary-red); margin-bottom: 30px; padding-bottom: 10px; margin-top: 60px; }
+        .tab-title { background: var(--primary-red); color: white; padding: 10px 30px; font-size: 18px; font-weight: 800; border-radius: 5px 5px 0 0; text-transform: uppercase; display: inline-block; transform: translateY(11px); } /* trick to sit on line */
+        
+        /* --- PRODUCT GRID --- */
+        .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .product-card { border: 1px solid var(--border-color); border-radius: 10px; padding: 20px; position: relative; transition: 0.3s; background: white; }
+        .product-card:hover { box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: #ccc; }
+        .badge { position: absolute; top: 15px; left: 15px; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; z-index: 2; }
+        .badge.new { background: #83b735; color: white; }
+        .badge.sale { background: var(--primary-red); color: white; }
+        .prod-img { margin-bottom: 15px; text-align: center; height: 200px; display: flex; align-items: center; justify-content: center; }
+        .prod-img img { max-height: 100%; }
+        .prod-rating { color: #fec42d; font-size: 12px; margin-bottom: 5px; }
+        .prod-title { font-weight: 700; margin-bottom: 10px; display: block; font-size: 15px; }
+        .prod-price { font-weight: 800; color: var(--primary-red); font-size: 16px; display: flex; gap: 10px; align-items: center; }
+        .prod-price del { color: #ccc; font-weight: 400; font-size: 13px; }
+        .prod-sold { margin-top: 15px; }
+        .progress-bar { height: 6px; background: #eee; border-radius: 3px; overflow: hidden; margin-top: 5px; }
+        .progress-fill { height: 100%; background: var(--primary-red); width: 0; }
+        
+        /* Countdown Timer */
+        .countdown-row { display: flex; gap: 5px; margin: 15px 0; }
+        .cd-box { background: #ffe200; color: #000; padding: 5px; border-radius: 4px; text-align: center; flex: 1; }
+        .cd-box span { display: block; font-weight: 800; font-size: 16px; line-height: 1; }
+        .cd-box small { font-size: 10px; text-transform: uppercase; font-weight: 600; }
+
+        /* --- WIDE BANNER (Painting) --- */
+        .wide-banner { margin-top: 60px; position: relative; border-radius: 10px; overflow: hidden; height: 400px; background: #f0f2f5; display: flex; align-items: center; }
+        .wide-banner img.bg-img { position: absolute; right: 0; top: 0; height: 100%; width: 60%; object-fit: cover; clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%); }
+        .banner-txt { padding-left: 60px; width: 40%; z-index: 2; }
+        .banner-txt h2 { font-size: 40px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
+        .sub-txt { color: var(--primary-red); font-weight: 700; margin-bottom: 10px; display: block; }
+
+        /* --- LOCATIONS & MAP SECTION --- */
+        .locations-section { margin-top: 60px; background: #f9f9f9; padding: 60px 0; text-align: center; position: relative; }
+        .map-bg { background-image: url('https://automize.risingbamboo.com/wp-content/themes/automize/dist/images/map.png'); background-size: contain; background-repeat: no-repeat; background-position: center; }
+        .car-center { position: relative; max-width: 800px; margin: 0 auto 50px; }
+        .location-list { text-align: left; position: absolute; top: 20%; left: 10%; }
+        .loc-item { margin-bottom: 20px; }
+        .loc-item strong { color: var(--primary-red); display: block; font-size: 16px; margin-bottom: 5px; }
+        .loc-item p { color: #666; font-size: 13px; }
+        
+        /* Service Cards Grid */
+        .services-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; margin-top: -40px; position: relative; z-index: 2; }
+        .svc-card { background: white; padding: 30px 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; transition: 0.3s; }
+        .svc-card:hover { transform: translateY(-5px); }
+        .svc-card img { width: 60px; margin: 0 auto 20px; }
+        .svc-card h5 { font-weight: 800; font-size: 14px; margin-bottom: 15px; }
+        .btn-gray { background: #eee; color: #333; padding: 8px 20px; border-radius: 20px; font-size: 11px; font-weight: 700; display: inline-block; margin-top: 10px; }
+
+        /* --- BLOG & TESTIMONIALS --- */
+        .split-section { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px; }
+        .testi-group {display: flex; gap: 20px; width: 100%;}
+        .testimonial-card { background: #f9f9f9; padding: 5px 10px 20px 30px; border-radius: 10px; display: inline-flex; gap: 20px; margin-bottom: 20px; flex: 1; flex-direction: column;}
+        .user-img { width: 60px; height: 60px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+        .blog-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px;}
+        .blog-big-img {border-radius: 10px; overflow: hidden; margin-bottom: 20px; }
+        .blog-cat { font-size: 11px; font-weight: 800; color: #ccc; text-transform: uppercase; margin-bottom: 10px; display: block;}
+        .blog-big-title { font-size: 22px; font-weight: 800; margin-bottom: 15px; line-height: 1.3;}
+        .blog-desc { font-size: 14px; color: #666; line-height: 1.6;}
+        .blog-item { display: flex; gap: 20px; margin-bottom: 30px; align-items: flex-start;}
+        .blog-thumb { width: 150px; border-radius: 8px; overflow: hidden; flex-shrink: 0;}
+        .blog-item-title { font-weight: 700; font-size: 15px; line-height: 1.4; color: #000;display: block; }
+        .blog-item-title:hover, .blog-big-title a:hover { color: var(--primary-red); }
+        .blog-date { font-size: 12px; color: #999; margin-bottom: 5px;}
+
+        /* --- BRANDS --- */
+        .brands-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; margin: 50px 0; border: 1px solid #eee; padding: 20px; border-radius: 10px; }
+        .brand-item { display: flex; align-items: center; justify-content: center; filter: grayscale(100%); opacity: 0.6; transition: 0.3s; }
+        .brand-item:hover { filter: grayscale(0); opacity: 1; }
+
+        /* --- NEWSLETTER --- */
+        .newsletter-box { display: flex; align-items: center; justify-content: space-between; padding: 40px; background: white; border-top: 1px solid #eee; }
+        .news-left { display: flex; align-items: center; gap: 20px; }
+        .news-text h4 { font-size: 20px; font-weight: 800; margin-bottom: 5px; }
+        .news-text span { color: var(--primary-red); }
+        .news-form { display: flex; gap: 10px; width: 50%; }
+        .news-form input { flex: 1; padding: 0 20px; border: 1px solid #ddd; border-radius: 4px; height: 50px; }
+        .btn-sub { background: var(--primary-red); color: white; border: none; padding: 0 30px; font-weight: 700; border-radius: 4px; cursor: pointer; height: 50px; }
+
+        /* --- FOOTER --- */
+        footer { background: #222; color: #fff; padding: 60px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-bottom: 40px; }
+        .footer-col h5 { font-size: 16px; font-weight: 700; margin-bottom: 20px; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: #999; font-size: 13px; }
+        .footer-col ul li a:hover { color: white; }
+        .contact-info li { display: flex; align-items: center; gap: 10px; color: #bbb; font-size: 13px; }
+        .footer-bottom { border-top: 1px solid #333; padding-top: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .app-buttons img { height: 35px; margin-left: 10px; display: inline-block; }
+        .payment-methods img { height: 20px; margin-left: 10px; display: inline-block; }
+
+        /* Icons SVG placeholder */
+        .svg-icon { width: 1em; height: 1em; fill: currentColor; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-layout { grid-template-columns: 1fr; }
+            .sidebar-menu { display: none; }
+            .banners-grid, .features-row, .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
+            .brands-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-top">
+            <div class="container flex justify-between items-center">
+                <a href="#"><img src="https://automize.risingbamboo.com/wp-content/uploads/2023/03/logo-dark.png" alt="Logo" style="height: 26px;"></a>
+                
+                <nav class="main-menu">
+                    <div class="dropdown-menu-wrap">
+                    <a href="#" class="active">Home <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Homepage Automize 01</a></li>
+                        <li><a href="#">Homepage Automize 02</a></li>
+                        <li><a href="#">Homepage Automize 03</a></li>
+                        <li><a href="#">Homepage Automize 04</a></li>
+                        <li><a href="#">Homepage Automize 05</a></li>
+                        <li><a href="#">Homepage Automize 06</a></li>
+                        <li><a href="#">Homepage Automize 07</a></li>
+                        <li><a href="#">Homepage Automize 08</a></li>
+                        <li><a href="#">Homepage Automize 09</a></li>
+                        <li><a href="#">Homepage Automize 10</a></li>
+                        <li><a href="#">Homepage Automize 11</a></li>
+                        <li><a href="#">Homepage Automize 12</a></li>
+                    </ul>
+                    </div>
+
+
+                    <div class="shop-mega-wrap">
+                    <a href="#">Shop <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></a>
+                    <div class="shop-mega-content">
+                        <div class="mega-column">
+                            <h3 class="mega-title">Products Category</h3>
+                            <ul>
+                                <li><a href="#">Category Left Sidebar</a></li>
+                                <li><a href="#">Category Right Sidebar</a></li>
+                                <li><a href="#">Category Top Sidebar</a></li>
+                                <li><a href="#">Category Without Sidebar</a></li>
+                                <li><a href="#">Category Full Width</a></li>
+                            </ul>
+                        </div>
+                        <div class="mega-column">
+                            <h3 class="mega-title">Products Category</h3>
+                            <ul>
+                                <li><a href="#">Category Canvas On Left</a></li>
+                                <li><a href="#">Category Canvas On Right</a></li>
+                                <li><a href="#">Category Canvas On Top</a></li>
+                                <li><a href="#">Category Canvas On Bottom</a></li>
+                            </ul>
+                        </div>
+                        <div class="mega-column">
+                            <h3 class="mega-title">Products Category</h3>
+                            <ul>
+                                <li><a href="#">Numbered Pagination</a></li>
+                                <li><a href="#">Load More Button</a></li>
+                                <li><a href="#">Infinity Scroll Load More</a></li>
+                            </ul>
+                        </div>
+                        <div class="mega-image-col">
+                            <img src="img/Automize 08 – Automize_files/menu-img.jpg" alt="Delivery man with tires"> 
+                         </div>
+                        </div>
+                    </div>
+                    
+
+
+
+
+                    <div class="product-mega-wrap">
+                    <a href="#">Product <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></a>
+        
+                        <div class="product-mega-content">
+                            <div class="mega-column">
+                                <h3 class="mega-title">Products Details</h3>
+                                <ul>
+                                    <li><a href="#">Product Thumbnail Left</a></li>
+                                    <li><a href="#">Product Thumbnail Top</a></li>
+                                    <li><a href="#">Product Thumbnail Bottom</a></li>
+                                    <li><a href="#">Product Thumbnail Right</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-column">
+                                <h3 class="mega-title">Products Details</h3>
+                                <ul>
+                                    <li><a href="#">Product Image Slider</a></li>
+                                    <li><a href="#">Product Tab Accordion</a></li>
+                                    <li><a href="#">Product Image Scroll Left</a></li>
+                                    <li><a href="#">Product Image Scroll Right</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-column">
+                                <h3 class="mega-title">Products Details</h3>
+                                <ul>
+                                    <li><a href="#">Product Show All Variants</a></li>
+                                    <li><a href="#">Product Video</a></li>
+                                    <li><a href="#">Product Sticky Add To Cart</a></li>
+                                    <li><a href="#">Product Deal Countdown</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-best-selling-col">
+                                <h3 class="mega-title">Best Selling</h3>
+                                <div class="best-selling-item">
+                                    <img src="img/Automize 08 – Automize_files/1-19-600x600.jpg" alt="Red wheel product">
+                                    <div class="item-details">
+                                        <div class="item-rating">
+                                            <svg viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path fill="#FFC107" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                            <span class="rating-count">(0)</span>
+                                        </div>
+                                        <p class="item-desc">Qurabitur id est vel nisi dictum rutrum consect...</p>
+                                        <p class="item-price">$190.00</p>
+                                    </div>
+                                </div>
+                                <div class="dot-navigation">
+                                    <span class="dot active"></span>
+                                    <span class="dot"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pages-dropdown-wrap">
+                    <a href="#">Pages <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></a>
+                    <ul class="pages-dropdown-content">
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">FAQs Page</a></li>
+                        <li><a href="#">Store Locations</a></li>
+                        <li><a href="#">404 Page</a></li>
+                        <li><a href="#">Store Direction</a></li>
+                        <li><a href="#">Testimonial</a></li>
+                        <li><a href="#">Wishlist</a></li>
+                        <li><a href="#">My account</a></li>
+                        <li><a href="#">Order Tracking</a></li>
+                        <li><a href="#">Checkout</a></li>
+                    </ul>
+                    </div>
+
+            
+                    <div class="blog-dropdown-wrap">
+                    <a href="#">Blog <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></a>
+                    
+                    <ul class="blog-dropdown-content">
+                        <li><a href="#">Blog Layout <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a></li>
+                        <li><a href="#">Post Layout <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a></li>
+                        <li><a href="#">Blog Style <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a></li>
+                        <li><a href="#">Blog Format <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a></li>
+                    </ul>
+                     </div>
+                
+                </nav>
+
+                <div class="header-contact">
+                    <a href="#" class="contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg> 
+                        Track Your Order
+                    </a>
+                    <a href="#" class="contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> 
+                        Store Locator
+                    </a>
+                    <a href="#" class="contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg> 
+                        Call Us : <span class="text-red" style="margin-left:5px;">+ (123)-456-7890</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-bottom">
+            <div class="container hb-container">
+                <div class="cat-btn">
+                    <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+                    BROWSE ALL CATEGORIES
+                </div>
+
+                <div class="search-wrap">
+                    <form class="search-form">
+                        <div class="search-cat-label">
+                            All Categories
+                            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                        </div>
+                        <input type="text" class="search-input" placeholder="Enter your keyword...">
+                        <button class="search-btn">
+                            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="header-icons">
+                    <div class="icon-box">
+                        <div class="ib-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                        </div>
+                        <div class="ib-text">Account <span>Hello, Login</span></div>
+                    </div>
+
+                    <div class="icon-box">
+                        <div class="ib-icon">
+                             <svg viewBox="0 0 24 24"><path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"/></svg>
+                             <span class="ib-count">0</span>
+                        </div>
+                    </div>
+
+                    <div class="icon-box">
+                        <div class="ib-icon">
+                            <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                            <span class="ib-count">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mt-10">
+        <div class="hero-layout">
+            <ul class="sidebar-menu">
+                <li><a href="#"><i>⊙</i> Headlights & Lighting <span>›</span></a></li>
+                <li><a href="#"><i>⊙</i> Car Audio Systems <span>›</span></a></li>
+                <li><a href="#"><i>⊙</i> Tires & Wheels <span>›</span></a></li>
+                <li><a href="#"><i>⊙</i> Suspension <span>›</span></a></li>
+                <li><a href="#"><i>⊙</i> Tools & Equipment <span>›</span></a></li>
+                <li><a href="#"><i>⊙</i> Oil Car <span>›</span></a></li>
+                <li><a href="#"><i>⊙</i> Brakes <span>›</span></a></li>
+                <li><a href="#"><i>⊙</i> Auto Safety & Security <span>›</span></a></li>
+                <li><a href="#"><i>⊙</i> Automotive Rims <span>›</span></a></li>
+                <li><a href="#"><i>⊙</i> Battery <span>›</span></a></li>
+            </ul>
+
+            <div class="hero-banner">
+                <div class="banner-content">
+                    <h4>NEW ARRIVALS</h4>
+                    <h1>BRAKES SYSTEM<br>FACTORY FOR SUV</h1>
+                    <a href="#" class="btn-shop">SHOP NOW</a>
+                </div>
+                <div class="hero-image">
+                    <img src="img/Automize 08 – Automize_files/1-22-700x700(1).jpg" alt="Brake System" style="transform: scale(1.5);"> </div>
+            </div>
+        </div>
+
+        <div class="features-row">
+            <div class="feature-box">
+                <div class="feature-icon"><img src="https://automize.risingbamboo.com/wp-content/uploads/2024/04/free-delivery.svg" alt="Icon"></div>
+                <div class="feature-text">
+                    <h5>FREE US DELIVERY</h5>
+                    <p>For US customers or orders over $200</p>
+                </div>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon"><img src="https://automize.risingbamboo.com/wp-content/uploads/2024/04/secure-payment.svg" alt="Icon"></div>
+                <div class="feature-text">
+                    <h5>SECURE PAYMENT</h5>
+                    <p>We accept Visa, Paypal, Mastercard</p>
+                </div>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon"><img src="https://automize.risingbamboo.com/wp-content/uploads/2024/04/support.svg" alt="Icon"></div>
+                <div class="feature-text">
+                    <h5>SUPPORT 24/7</h5>
+                    <p>Contact us 24 hours a day</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="banners-grid">
+            <div class="promo-card">
+                <div class="card-overlay">
+                    <div class="text-red font-bold text-xs uppercase mb-1">Free Service</div>
+                    <h4>TIRE REPAIR</h4>
+                    <a href="#" class="btn-small">LEARN MORE</a>
+                </div>
+                <img src="https://automize.risingbamboo.com/wp-content/uploads/2024/04/banner-8.jpg" alt="Tire">
+            </div>
+            <div class="promo-card">
+                <div class="card-overlay">
+                    <div class="text-red font-bold text-xs uppercase mb-1">Auto LED Headlight</div>
+                    <h4>CAR HEADLIGHT</h4>
+                    <a href="#" class="btn-small">SHOP NOW</a>
+                </div>
+                <img src="https://automize.risingbamboo.com/wp-content/uploads/2024/04/banner-9.jpg" alt="Light">
+            </div>
+            <div class="promo-card">
+                <div class="card-overlay">
+                    <div class="text-red font-bold text-xs uppercase mb-1">Car Key Case</div>
+                    <h4>FOR PEUGEOT</h4>
+                    <a href="#" class="btn-small">SHOP NOW</a>
+                </div>
+                <img src="https://automize.risingbamboo.com/wp-content/uploads/2024/04/banner-10.jpg" alt="Key">
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section-header">
+            <div class="tab-title">FLASH SALE</div>
+            <div>
+                <span style="height: 10px; width: 10px; background: red; display: inline-block; border-radius: 50%; margin-right: 5px;"></span>
+            </div>
+        </div>
+
+        <div class="product-grid" style="grid-template-columns: repeat(2, 1fr);">
+            <div class="product-card flex items-center gap-4">
+                <div style="width: 40%;" class="prod-img">
+                    <img src="https://automize.risingbamboo.com/wp-content/uploads/2021/08/1-2-600x600.jpg" alt="Wheel">
+                </div>
+                <div style="width: 60%;">
+                    <div class="prod-rating">★★★★★ (4)</div>
+                    <a href="#" class="prod-title">Dorman Steel Wheel Compatible</a>
+                    <div class="prod-price">$90.00 <del>$120.00</del> <span style="background:red; color:white; font-size:10px; padding:2px 4px; border-radius:2px; margin-left:5px;">-25%</span></div>
+                    
+                    <div class="countdown-row">
+                        <div class="cd-box"><span>440</span><small>Days</small></div>
+                        <div class="cd-box"><span>09</span><small>Hours</small></div>
+                        <div class="cd-box"><span>18</span><small>Mins</small></div>
+                        <div class="cd-box"><span>39</span><small>Secs</small></div>
+                    </div>
+
+                    <div class="prod-sold">
+                        <div class="text-xs font-bold text-gray-500 uppercase">71% Sold - Available: 2</div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 71%;"></div></div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="product-card flex items-center gap-4">
+                <span class="badge new">NEW</span>
+                <div style="width: 40%;" class="prod-img">
+                    <img src="https://automize.risingbamboo.com/wp-content/uploads/2022/10/1-22-600x600.jpg" alt="Tire">
+                </div>
+                <div style="width: 60%;">
+                    <div class="prod-rating">★★★★★ (1)</div>
+                    <a href="#" class="prod-title">Curabitur ultrices enim</a>
+                    <div class="prod-price">$100.00 <del>$140.00</del> <span style="background:red; color:white; font-size:10px; padding:2px 4px; border-radius:2px; margin-left:5px;">-29%</span></div>
+                    
+                    <div class="countdown-row">
+                        <div class="cd-box"><span>337</span><small>Days</small></div>
+                        <div class="cd-box"><span>09</span><small>Hours</small></div>
+                        <div class="cd-box"><span>18</span><small>Mins</small></div>
+                        <div class="cd-box"><span>39</span><small>Secs</small></div>
+                    </div>
+
+                    <div class="prod-sold">
+                        <div class="text-xs font-bold text-gray-500 uppercase">53% Sold - Available: 7</div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 53%;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="wide-banner">
+            <div class="banner-txt">
+                <span class="sub-txt">AUTO PAINTING SERVICES</span>
+                <h2>AUTO BODY PAINT<br>REPAIR SERVICES</h2>
+                <a href="#" class="btn-shop">SHOP NOW</a>
+            </div>
+            <img class="bg-img" src="img/Automize 08 – Automize_files/bn8-1.jpg" alt="Painter">
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="text-center mt-10 mb-4">
+            <h2 class="uppercase font-bold text-2xl">Top Offers This Week</h2>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="prod-img"><img src="https://automize.risingbamboo.com/wp-content/uploads/2021/08/1-21-600x600.jpg" alt="Headlight"></div>
+                <div class="prod-rating">★★★★★ (0)</div>
+                <a href="#" class="prod-title">Mauris vel arcu eget justo</a>
+                <div class="prod-price">$120.00</div>
+            </div>
+            <div class="product-card">
+                <div class="prod-img"><img src="img/Automize 08 – Automize_files/1-19-600x600.jpg" alt="Oil"></div>
+                <div class="prod-rating">★★★★★ (2)</div>
+                <a href="#" class="prod-title">Vivamus feugiat enim vitae</a>
+                <div class="prod-price">$16.00 <del>$19.00</del></div>
+            </div>
+             <div class="product-card">
+                <div class="prod-img"><img src="https://automize.risingbamboo.com/wp-content/uploads/2022/10/1-22-600x600.jpg" alt="Tire"></div>
+                <span class="badge new">NEW</span>
+                <div class="prod-rating">★★★★★ (1)</div>
+                <a href="#" class="prod-title">Curabitur ultrices enim ut</a>
+                <div class="prod-price">$100.00 <del>$140.00</del></div>
+            </div>
+             <div class="product-card">
+                <div class="prod-img"><img src="img/Automize 08 – Automize_files/1-20-700x700.jpg" alt="Cam"></div>
+                <div class="prod-rating">★★★★★ (0)</div>
+                <a href="#" class="prod-title">Fusce ac ligula non magna</a>
+                <div class="prod-price">$188.00</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="locations-section map-bg">
+        <div class="container">
+            <div class="text-red font-bold mb-2 uppercase">Our Locations</div>
+            <h2 class="text-2xl font-bold mb-10">Car Washing and Care Points</h2>
+            
+            <div class="car-center">
+                <div class="location-list">
+                    <div class="loc-item">
+                        <strong><span style="color:red">📍</span> Miami Garage</strong>
+                        <p>15 West 21th Street, Miami FL, USA</p>
+                    </div>
+                    <div class="loc-item">
+                        <strong><span style="color:red">📍</span> Chicago Garage</strong>
+                        <p>5400 N. Lakewood Ave, Chicago, IL 60640</p>
+                    </div>
+                    <div class="loc-item">
+                        <strong><span style="color:red">📍</span> Seattle Garage</strong>
+                        <p>312 S Washington St Seattle WA 98104</p>
+                    </div>
+                </div>
+                <img src="img/Automize 08 – Automize_files/banner-car.png" alt="Car Service" style="max-width: 600px; margin-left: 500px;">
+            </div>
+
+            <div class="container">
+                <div class="services-grid">
+                    <div class="svc-card">
+                        <img src="img/Automize 08 – Automize_files/8.png" alt="Detailing">
+                        <h5>Detailing Service</h5>
+                        <p class="text-xs text-gray-500 mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <a href="#" class="btn-gray">LEARN MORE</a>
+                    </div>
+                    <div class="svc-card">
+                        <img src="img/Automize 08 – Automize_files/Car-Inspection.png" alt="Maintenance">
+                        <h5>Maintenance Services</h5>
+                        <p class="text-xs text-gray-500 mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <a href="#" class="btn-gray">LEARN MORE</a>
+                    </div>
+                    <div class="svc-card">
+                        <img src="https://automize.risingbamboo.com/wp-content/uploads/2024/04/battery-v3.svg" alt="Battery">
+                        <h5>Replace Battery</h5>
+                        <p class="text-xs text-gray-500 mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <a href="#" class="btn-gray">LEARN MORE</a>
+                    </div>
+                    <div class="svc-card">
+                        <img src="img/Automize 08 – Automize_files/4.png" alt="Wash">
+                        <h5>Washing & Clean</h5>
+                        <p class="text-xs text-gray-500 mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <a href="#" class="btn-gray">LEARN MORE</a>
+                    </div>
+                    <div class="svc-card">
+                        <img src="img/Automize 08 – Automize_files/10.png" alt="Film">
+                        <h5>Insulation Film Stickers</h5>
+                        <p class="text-xs text-gray-500 mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <a href="#" class="btn-gray">LEARN MORE</a>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="text-center mt-10"><h2 class="font-bold text-xl">TESTIMONIALS</h2></div>
+        
+        <div class="split-section">
+            <div>
+                <div class="testi-group">
+                 <div class="testimonial-card">
+                    <div class="user-img"><img src="img/Automize 08 – Automize_files/testimonial-3.jpg" alt="User"></div>
+                    <div>
+                        <div class="text-yellow-400 text-xs mb-1">★★★★★</div>
+                        <h4 class="font-bold text-sm mb-2">Great Price & Services</h4>
+                        <p class="text-gray-500 text-xs italic">"Automize rice crackers are a staple in my pantry. They are a healthier alternative to traditional crackers..."</p>
+                        <div class="mt-2 text-xs font-bold">Jennifer - <span class="text-gray-400">From California</span></div>
+                    </div>
+                 </div>
+                 <div class="testimonial-card">
+                    <div class="user-img"><img src="img/Automize 08 – Automize_files/testimonial-4.jpg" alt="User"></div>
+                    <div>
+                        <div class="text-yellow-400 text-xs mb-1">★★★★★</div>
+                        <h4 class="font-bold text-sm mb-2">Best Quality</h4>
+                        <p class="text-gray-500 text-xs italic">"As a vegetarian, I always miss out on the classic breakfast staple of omelettes. But with Automize..."</p>
+                        <div class="mt-2 text-xs font-bold">Monica - <span class="text-gray-400">From Chicago</span></div>
+                    </div>
+                 </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+   <div class="container mb-60">
+    <h2 class="font-extra uppercase mb-40" style="font-size:24px;">LATEST NEWS FROM BLOG</h2> 
+    
+    <div class="blog-layout">
+        <div class="blog-main">
+            <div class="blog-big-img">
+                <img src="https://automize.risingbamboo.com/wp-content/uploads/2018/11/2-700x424.jpg" alt="Big News">
+            </div>
+            <div class="blog-big-info">
+                <span class="blog-cat">BATTERIES POWER</span>
+                <h3 class="blog-big-title"><a href="#">Growing in a Recession: Maximize Sales in the Parts Department 2</a></h3>
+                </div>
+        </div>
+
+        <div class="blog-list">
+            <div class="blog-item">
+                <div class="blog-thumb"><img src="https://automize.risingbamboo.com/wp-content/uploads/2018/11/6-300x182.jpg" alt="News"></div>
+                <div>
+                    <div class="blog-date">12th Mar 2024</div>
+                    <a href="#" class="blog-item-title">Growing in a Recession: Maximize Sales in the Parts Department</a>
+                </div>
+            </div>
+            <div class="blog-item">
+                <div class="blog-thumb"><img src="https://automize.risingbamboo.com/wp-content/uploads/2018/11/12-1-300x182.jpg" alt="News"></div>
+                <div>
+                    <div class="blog-date">14th Feb 2024</div>
+                    <a href="#" class="blog-item-title">Tips for Long Distance Driving & Car Maintenance</a>
+                </div>
+            </div>
+            <div class="blog-item">
+                <div class="blog-thumb"><img src="https://automize.risingbamboo.com/wp-content/uploads/2018/11/10-1-300x182.jpg" alt="News"></div>
+                <div>
+                    <div class="blog-date">08th Feb 2024</div>
+                    <a href="#" class="blog-item-title">Why Your Car Battery Dies in Winter</a>
+                </div>
+            </div>
+            </div>
+    </div>
+</div>
+
+
+    <div class="container">
+        <div class="brands-grid">
+            <div class="brand-item"><img src="img/Automize 08 – Automize_files/brand-1.png" alt="Brand" width="100"></div>
+            <div class="brand-item"><img src="img/Automize 08 – Automize_files/brand-2.png" alt="Brand" width="100"></div>
+            <div class="brand-item"><img src="img/Automize 08 – Automize_files/brand-3.png" alt="Brand" width="100"></div>
+            <div class="brand-item"><img src="img/Automize 08 – Automize_files/brand-4.png" alt="Brand" width="100"></div>
+            <div class="brand-item"><img src="img/Automize 08 – Automize_files/brand-5.png" alt="Brand" width="100"></div>
+            <div class="brand-item"><img src="img/Automize 08 – Automize_files/brand-6.png" alt="Brand" width="100"></div>
+        </div>
+        <div class="brands-grid">
+            <div class="brand-item"><img src="img/Automize 08 – Automize_files/brand-7.png" alt="Brand" width="100"></div>
+            <div class="brand-item"><img src="img/Automize 08 – Automize_files/brand-8.png" alt="Brand" width="100"></div>
+            <div class="brand-item"><img src="img/Automize 08 – Automize_files/brand-9.png" alt="Brand" width="100"></div>
+            <div class="brand-item"><img src="img/Automize 08 – Automize_files/brand-10.png" alt="Brand" width="100"></div>
+            <div class="brand-item"><img src="img/Automize 08 – Automize_files/brand-11.png" alt="Brand" width="100"></div>
+            <div class="brand-item"><img src="img/Automize 08 – Automize_files/brand-12.png" alt="Brand" width="100"></div>
+        </div>
+    </div>
+
+    <div class="container mb-4">
+        <div class="newsletter-box">
+            <div class="news-left">
+                <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" width="50" style="opacity:0.5">
+                <div class="news-text">
+                    <h4>SUBSCRIBE & <span class="text-red">GET 15% DISCOUNT</span></h4>
+                    <p class="text-xs text-gray-500">Get 15% off your first purchase! Plus, be the first to know about sales.</p>
+                </div>
+            </div>
+            <form class="news-form">
+                <input type="email" placeholder="Enter your email">
+                <button type="submit" class="btn-sub">SUBSCRIBE</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="https://automize.risingbamboo.com/wp-content/uploads/2023/03/logo-dark.png" alt="Logo" style="filter: brightness(0) invert(1); height: 25px; margin-bottom: 20px;">
+                    <p class="text-gray-400 text-xs mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                    <ul class="contact-info">
+                        <li><span>📞</span> We're available by phone <strong>+123-456-789</strong></li>
+                        <li><span>✉️</span> info@example.com</li>
+                        <li><span>🕒</span> Monday till Friday 10 to 6 EST</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>HELP & SUPPORT</h5>
+                    <ul>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">How To Order</a></li>
+                        <li><a href="#">How To Track</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>COMPANY INFO</h5>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Store Locations</a></li>
+                        <li><a href="#">Testimonial</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>CUSTOMER CARE</h5>
+                    <ul>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Gift Card</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="flex items-center">
+                    <span class="text-xs text-gray-500 mr-4">FOLLOW US :</span>
+                    <span class="text-gray-500 text-xs">F T I Y</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-xs text-gray-500 mr-4">DOWNLOAD APP ON MOBILE :</span>
+                    <div class="app-buttons">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
+                    </div>
+                </div>
+                <div class="payment-methods">
+                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa">
+                     <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="Paypal">
+                     <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
+                </div>
+            </div>
+            <div class="text-center text-xs text-gray-600 mt-4">
+                <p>Copyright © 2024 RisingBamboo. All Rights Reserved.</p>
+                <p>Huỳnh Nguyên Bổn 6551071009</p>
+                <p>Huỳnh Gia Bảo 6551071007</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
